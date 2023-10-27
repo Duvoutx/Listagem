@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Clientes</title>
+    <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+li {
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+
+span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+li:nth-child(even) {
+    background-color: #f2f2f2;
+}
+    </style>
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <ul>
+        <li th:each="cliente : ${clientes}">
+            <span th:text="${cliente.cpf}"></span>
+            <span th:text="${cliente.nome}"></span>
+            <span th:text="${cliente.email}"></span>
+            <span th:text="${cliente.dataNascimento}"></span>
+            <a th:href="@{'/api/excluircliente/' + ${cliente.cpf}}">Excluir</a>
+            
+        </li>
+        </li>
+    </ul>
+    
+</body>
+
+</html>
